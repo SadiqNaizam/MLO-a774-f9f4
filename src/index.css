@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,61 +34,59 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Maintained from original; PRD's default "rounded-md" (0.375rem) is achieved via calc(var(--radius) - 2px) in tailwind.config */
 
+    /* Unchanged sidebar variables for light mode as PRD only specifies dark theme */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%; /* PRD: #000000 */
+    --foreground: 0 0% 100%; /* PRD: #FFFFFF (primaryText) */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 31% 14%; /* PRD: #1A1A2E (surface) */
+    --card-foreground: 0 0% 100%; /* PRD: #FFFFFF (primaryText) */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 31% 14%; /* PRD: #1A1A2E (surface) */
+    --popover-foreground: 0 0% 100%; /* PRD: #FFFFFF (primaryText) */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 168 73% 42%; /* PRD: #1ABC9C (accentTeal) */
+    --primary-foreground: 0 0% 100%; /* PRD: #FFFFFF (primaryText for contrast on Teal) */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 31% 14%; /* PRD: #1A1A2E (surface, as secondary background) */
+    --secondary-foreground: 0 0% 65%; /* PRD: #A6A6A6 (secondaryText) */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 31% 14%; /* PRD: #1A1A2E (surface, as muted background) */
+    --muted-foreground: 0 0% 65%; /* PRD: #A6A6A6 (secondaryText) */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 36 90% 51%; /* PRD: #F39C12 (accentOrange) */
+    --accent-foreground: 0 0% 0%; /* Black text for better contrast on Orange */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%; /* Kept from existing dark theme, PRD does not specify */
+    --destructive-foreground: 0 0% 100%; /* PRD: #FFFFFF (primaryText) */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 236 20% 25%; /* PRD: #33354D */
+    --input: 236 20% 25%; /* PRD: #33354D */
+    --ring: 168 73% 42%; /* PRD: accentTeal for ring, common practice */
+    
+    /* --radius: 0.5rem; is inherited from :root and not overridden for .dark */
+
+    /* Sidebar variables updated to align with the PRD's dark theme palette */
+    --sidebar-background: 240 5.9% 10%; /* A very dark specific background for sidebar, close to main background */
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
   }
 }
 
@@ -97,5 +97,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif; /* PRD: primaryFont */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
