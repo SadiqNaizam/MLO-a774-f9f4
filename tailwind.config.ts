@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -52,6 +53,9 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        /* Explicit PRD colors, also mapped to CSS variables above */
+        accentTeal: '#1ABC9C',      // PRD: accentTeal
+        accentOrange: '#F39C12',    // PRD: accentOrange
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -65,9 +69,12 @@ export default {
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
+				md: 'calc(var(--radius) - 2px)', /* Achieves 0.375rem (rounded-md) if --radius is 0.5rem */
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans], /* PRD: primaryFont */
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
